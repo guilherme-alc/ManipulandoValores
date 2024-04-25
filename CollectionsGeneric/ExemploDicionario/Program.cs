@@ -17,8 +17,14 @@
             //alterar valor
             listaDeCompras["Pão"] = 6.50;
 
-            List<string> produtosComprados = listaDeCompras.Keys.ToList();
+            if(listaDeCompras.TryGetValue("Pão", out double valorPao))
+            {
+                Console.WriteLine($"O valor do pão é {valorPao:c}");
+                Console.WriteLine();
+            }
+
             Console.WriteLine("Lista de produtos comprados:");
+            List<string> produtosComprados = listaDeCompras.Keys.ToList();
             foreach (string produto in produtosComprados)
             {
                 Console.WriteLine(produto);
