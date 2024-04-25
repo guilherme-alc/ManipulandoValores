@@ -6,29 +6,26 @@ namespace ComecandoComObjetos
     {
         static void Main(string[] args)
         {
-            Pessoa p1 = new Pessoa(nome: "Guilherme", sobrenome: "Augusto");
-            Pessoa p2 = new Pessoa(nome: "Andreas", sobrenome: "Kisser");
+            Curso cursoAds = new Curso("Análise e Desenvolvimento de Sistemas");
+            Professor professor = new Professor(cursoAds, nome: "Chester", sobrenome: "Bennington");
+            cursoAds.Professor = professor;
 
-            Pessoa p3 = new Pessoa();
-            p3.Nome = "Chester";
-            p3.Sobrenome = "Bennington";
+            Aluno aluno1 = new Aluno(cursoAds, nome: "Guilherme", sobrenome: "Augusto");
+            Aluno aluno2 = new Aluno(cursoAds, nome: "Andreas", sobrenome: "Kisser");
+            Aluno aluno3 = new Aluno(cursoAds, nome: "Chico", sobrenome: "Moreno");
+            aluno3.Idade = 19;
 
-            Pessoa p4 = new Pessoa();
-            p4.Nome = "Chico";
-            p4.Sobrenome = "Moreno";
+            aluno3.Apresentar();
+            professor.Apresentar();
 
 
-            Curso curso = new Curso();
-            curso.Nome = "Análise e Desenvolvimento de Sistemas";
-            curso.Alunos = new List<Pessoa>();
-
-            curso.AdicionarAluno(p1);
-            curso.AdicionarAluno(p2);
-            curso.AdicionarAluno(p3);
-            curso.AdicionarAluno(p4);
-            curso.ExibirAlunosMatriculados();
-            curso.RemoverAluno(p4);
-            curso.ExibirAlunosMatriculados();
+            cursoAds.AdicionarAluno(aluno1);
+            cursoAds.AdicionarAluno(aluno2);
+            cursoAds.AdicionarAluno(aluno3);
+            cursoAds.ExibirAlunosMatriculados();
+            cursoAds.RemoverAluno(aluno3);
+            cursoAds.ExibirAlunosMatriculados();
+            System.Object obj = new System.Object();
         }
     }
 }

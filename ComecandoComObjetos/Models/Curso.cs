@@ -2,6 +2,11 @@
 {
     internal class Curso
     {
+        public Curso (string nome)
+        {
+            Alunos = new List<Aluno>();
+            Nome = nome;
+        }
         private string _nome;
         public string Nome
         {
@@ -18,12 +23,13 @@
                 _nome = value;
             }
         }
-        public List<Pessoa> Alunos { get; set; }
-        public void AdicionarAluno(Pessoa aluno)
+        public List<Aluno> Alunos;
+        public Professor Professor { get; set; }
+        public void AdicionarAluno(Aluno aluno)
         {
             Alunos.Add(aluno);
         }
-        public bool RemoverAluno(Pessoa aluno)
+        public bool RemoverAluno(Aluno aluno)
         {
             return Alunos.Remove(aluno);
         }
@@ -40,6 +46,7 @@
             {
                 Console.WriteLine($"{posicao + 1}º {Alunos[posicao].NomeCompleto}");
             }
+            Console.WriteLine($"Professor do curso: {Professor.Nome}");
         }
     }
 }

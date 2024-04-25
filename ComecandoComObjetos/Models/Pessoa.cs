@@ -1,16 +1,7 @@
 ﻿namespace ComecandoComObjetos.Models
 {
-    internal class Pessoa
+    abstract class Pessoa
     {
-        public Pessoa()
-        {
-
-        }
-        public Pessoa(string nome, string sobrenome)
-        {
-            Nome = nome;
-            Sobrenome = sobrenome;
-        }
         private string _nome;
         public string Nome
         {
@@ -18,11 +9,19 @@
 
             set
             {
-                if (value == "")
+                try
                 {
-                    throw new ArgumentException("O nome não pode ser vazio");
-                }
-                _nome = value;
+                    if (!(value == ""))
+                    {
+                        _nome = value;                       
+                    } else
+                    {
+                        throw new ArgumentException("O nome não pode ser vazio");
+                    }
+                } catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }                
             }
         }
         public string Sobrenome { get; set; }
@@ -36,14 +35,22 @@
             get => _idade;
             set
             {
-                if (value < 0)
+                try
                 {
-                    throw new ArgumentException("A idade não pode ser negativa");
+                    if (value > 0)
+                    {
+                        _idade = value;                    
+                    } else
+                    {
+                        throw new ArgumentException("A idade não pode ser negativa");
+                    }
+                } catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
-                _idade = value;
             }
         }
-        public void Apresentar()
+        public virtual void Apresentar()
         {
             Console.WriteLine($"Olá eu sou {NomeCompleto} e tenho {Idade} anos.");
         }
